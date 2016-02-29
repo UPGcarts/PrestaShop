@@ -1,0 +1,27 @@
+### This is a Git Ignore File
+# Anything that you don't want either tracked or pushed up to the site should be listed here
+# wildcard patterns work fine or you can get fancy with the syntax if you want
+# obvious candidates for ignore are DB credential config
+
+#### Binary files we dont want
+*.tar
+*.gz
+*.7z
+*.bz
+*.bz2
+*.zip
+
+#### composer file
+modules/payco/vendor
+testsuite/phpunit/vendor
+testsuite/phpunit/composer.lock
+testsuite/behat/vendor
+testsuite/behat/composer.lock
+
+testsuite/behat/behat.yml
+
+####  IDE Specific
+.project
+.buildpath
+.settings/*
+.idea/
