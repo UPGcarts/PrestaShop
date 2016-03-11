@@ -32,8 +32,8 @@ The last settings are normally called 'Store Id : <currency code>' is for multi 
 
 UPG requires to be told some Urls for the callback and the MNS saving the urls you will need to tell UPG are as follows for stores with seo friendly urls:
 
-Callback Url: <store domain>/module/payco/callback
-MNS Url: <store domain>/module/payco/mns
+Callback Url: <store domain>/module/upg/callback
+MNS Url: <store domain>/module/upg/mns
 
 ##Module Requirements
 The UPG API requires that each transaction sends through the gender of the customer. For this purpose the if you wish to use the module then the user title is now a required field and each title must have an assigned gender.
@@ -43,6 +43,6 @@ You will also need to modify your template to make the title a required field
 
 ##MNS Processing
 A cron process needs to be setup to Processing the MNS update messages. The url which needs to be setup with cron is:
-<store url>/modules/payco/mns-cron.php
+<store url>/modules/upg/mns-cron.php
 
 This cron should be ran every 2 to 5 minuets.

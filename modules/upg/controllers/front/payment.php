@@ -1,7 +1,7 @@
 <?php
 
 
-class PaycoPaymentModuleFrontController extends ModuleFrontController
+class UpgPaymentModuleFrontController extends ModuleFrontController
 {
     public function initContent()
     {
@@ -30,7 +30,7 @@ class PaycoPaymentModuleFrontController extends ModuleFrontController
 
         } else {
             //this is a normal transaction do redirect
-            Tools::redirect($this->context->link->getModuleLink('payco', 'process'));
+            Tools::redirect($this->context->link->getModuleLink('upg', 'process'));
         }
 
         return true;

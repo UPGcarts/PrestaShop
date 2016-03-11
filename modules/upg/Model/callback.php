@@ -1,8 +1,8 @@
 <?php
 
-include_once(_PS_MODULE_DIR_ . 'payco/vendor/autoload.php');
+include_once(_PS_MODULE_DIR_ . 'upg/vendor/autoload.php');
 
-class PaycoPrestashopCallback implements \Upg\Library\Callback\ProcessorInterface
+class UpgPrestashopCallback implements \Upg\Library\Callback\ProcessorInterface
 {
 
     const NOTIFICATION_TYPE_PAYMENT_STATUS= 'PAYMENT_STATUS';
@@ -22,7 +22,7 @@ class PaycoPrestashopCallback implements \Upg\Library\Callback\ProcessorInterfac
     private $module;
     private $config;
 
-    public function __construct(Payco $module, \Upg\Library\Config $config)
+    public function __construct(Upg $module, \Upg\Library\Config $config)
     {
         $this->module = $module;
         $this->config = $config;
@@ -80,7 +80,7 @@ class PaycoPrestashopCallback implements \Upg\Library\Callback\ProcessorInterfac
 
 
             if($transactionId){
-                $orderStatus = Configuration::get(Payco::UPG_STATUS_RETURNED);
+                $orderStatus = Configuration::get(Upg::UPG_STATUS_RETURNED);
 
                 list($cartId, $timestamp) = explode(':', $transactionId);
 
@@ -92,17 +92,17 @@ class PaycoPrestashopCallback implements \Upg\Library\Callback\ProcessorInterfac
                     'transaction_reference = '.(int)$transactionId
                 );
 
-                return Context::getContext()->link->getModuleLink('payco', 'success', array('order_id'=>$orderId, 'cart_id'=>$cartId));
+                return Context::getContext()->link->getModuleLink('upg', 'success', array('order_id'=>$orderId, 'cart_id'=>$cartId));
             }
 
         }
 
         //check for the paypal field
         if(self::validateCallbackUrl($this->paymentInstrumentsPageUrl)) {
-            return Context::getContext()->link->getModuleLink('payco', 'recover', array('url'=>$this->paymentInstrumentsPageUrl), true);
+            return Context::getContext()->link->getModuleLink('upg', 'recover', array('url'=>$this->paymentInstrumentsPageUrl), true);
         }
 
-        return Context::getContext()->link->getModuleLink('payco', 'error');
+        return Context::getContext()->link->getModuleLink('upg', 'error');
     }
 
     public static function validateCallbackUrl($url)

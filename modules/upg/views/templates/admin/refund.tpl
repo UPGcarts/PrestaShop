@@ -2,7 +2,7 @@
 <div id="formPaycoRefund" class="panel">
     <div class="panel-heading">
         <i class="icon-money"></i>
-        {l s="Payco Refund"} <span class="badge"></span>
+        {l s="UPG Refund"} <span class="badge"></span>
     </div>
     <form id="formPaycoRefund"  method="post" action="{$current_index}&amp;vieworder&amp;id_order={$order->id}&amp;token={$smarty.get.token|escape:'html':'UTF-8'}">
         <div class="table-responsive">
@@ -30,7 +30,7 @@
                             <input name="capture_id" autocomplete="off" list="capture_id" class="capture_id">
                             <datalist id="capture_id">
                                 {foreach from=$captures item=capture}
-                                    {if $capture->payment_method == 'Payco Module'}
+                                    {if $capture->payment_method == 'Upg Module'}
                                     <option value="{$capture->id}">{$capture->amount} : {$capture->transaction_id}</option>
                                     {/if}
                                 {/foreach}

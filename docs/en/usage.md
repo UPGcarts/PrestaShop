@@ -14,5 +14,5 @@ To capture transaction which are not set to autocapture or can not be auto-captu
 ##Refunds
 To refund a UPG refund please follow these steps.
 1. Log in to the admin and go to the order
-2. In the order there will be a section called 'Payco Refund'
+2. In the order there will be a section called 'Upg Refund'
 3. In this section select a capture from the dropdown, fill in a description and the amount and click on 'Refund'

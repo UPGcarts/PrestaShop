@@ -1,7 +1,7 @@
 <?php
 
 
-class PaycoProcessModuleFrontController extends ModuleFrontController
+class UpgProcessModuleFrontController extends ModuleFrontController
 {
 
     private $b2bFields = array();

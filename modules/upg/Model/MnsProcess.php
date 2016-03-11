@@ -77,7 +77,7 @@ class MnsProcess
                 'order_reference' => $order->reference,
                 'id_currency' => $order->id_currency,
                 'amount' => $order->total_paid,
-                'payment_method' => 'Payco Module',
+                'payment_method' => 'Upg Module',
                 'conversion_rate' => $order->conversion_rate,
                 'transaction_id' => $order->reference,
                 'date_add' => date('Y-m-d H:i:s')

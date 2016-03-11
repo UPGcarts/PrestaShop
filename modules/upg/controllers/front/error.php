@@ -1,7 +1,7 @@
 <?php
 
 
-class PaycoErrorModuleFrontController extends ModuleFrontController
+class UpgErrorModuleFrontController extends ModuleFrontController
 {
     public function initContent()
     {

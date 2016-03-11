@@ -1,13 +1,13 @@
 <?php
 
-include_once(_PS_MODULE_DIR_ . 'payco/vendor/autoload.php');
-include_once(_PS_MODULE_DIR_ . 'payco/Model/callback.php');
+include_once(_PS_MODULE_DIR_ . 'upg/vendor/autoload.php');
+include_once(_PS_MODULE_DIR_ . 'upg/Model/callback.php');
 
 /**
- * @property Payco module
- * Class PaycoRecoverModuleFrontController
+ * @property Upg module
+ * Class UpgRecoverModuleFrontController
  */
-class PaycoRecoverModuleFrontController extends ModuleFrontController
+class UpgRecoverModuleFrontController extends ModuleFrontController
 {
     public function initContent()
     {
@@ -19,7 +19,7 @@ class PaycoRecoverModuleFrontController extends ModuleFrontController
 
         parent::initContent();
 
-        if(PaycoPrestashopCallback::validateCallbackUrl($_GET['url'])) {
+        if(UpgPrestashopCallback::validateCallbackUrl($_GET['url'])) {
             $this->context->smarty->assign(array(
                 'nbProducts' => $this->context->cart->nbProducts(),
                 'this_path' => $this->module->getPathUri(),

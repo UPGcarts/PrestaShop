@@ -2,7 +2,7 @@
 <div class="panel">
     <div class="panel-heading">
         <i class="icon-money"></i>
-        {l s="Payco Payment Status"} <span class="badge"></span>
+        {l s="UPG Payment Status"} <span class="badge"></span>
     </div>
     <div id="payco_status" class="well hidden-print">
         <dl>

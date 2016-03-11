@@ -1,6 +1,6 @@
 #UPG Prestashop Module
 
-This is the Payco module for Prestashop 1.6 to process payments using the Payco Iframe facilities for PCI compliance.
+This is the UPG module for Prestashop 1.6 to process payments using the Upg Iframe facilities for PCI compliance.
 The single module allows for using the following payment methods in a single module:
 * Credit/Debit Card with and without 3D Secure
 * Direct Debit

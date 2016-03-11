@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>payco</name>
-	<displayName><![CDATA[Payco Module]]></displayName>
+	<displayName><![CDATA[Upg Module]]></displayName>
 	<version><![CDATA[0.0.2]]></version>
-	<description><![CDATA[Payco module.]]></description>
+	<description><![CDATA[Upg module.]]></description>
 	<author><![CDATA[Payco]]></author>
 	<tab><![CDATA[payments_gateways]]></tab>
 	<confirmUninstall><![CDATA[Are you sure you want to uninstall?]]></confirmUninstall>

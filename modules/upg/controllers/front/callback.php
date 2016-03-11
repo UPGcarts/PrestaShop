@@ -1,13 +1,13 @@
 <?php
 
-include_once(_PS_MODULE_DIR_ . 'payco/vendor/autoload.php');
-include_once(_PS_MODULE_DIR_ . 'payco/Model/callback.php');
+include_once(_PS_MODULE_DIR_ . 'upg/vendor/autoload.php');
+include_once(_PS_MODULE_DIR_ . 'upg/Model/callback.php');
 
 /**
- * @property Payco module
+ * @property Upg module
  * Class PaycoCallbackModuleFrontController
  */
-class PaycoCallbackModuleFrontController extends ModuleFrontController
+class UpgCallbackModuleFrontController extends ModuleFrontController
 {
 
     public function postProcess()
@@ -30,7 +30,7 @@ class PaycoCallbackModuleFrontController extends ModuleFrontController
             'mac' => (array_key_exists('mac',$_GET)?$_GET['mac']:''),
         );
 
-        $processor = new PaycoPrestashopCallback($this->module, $config);
+        $processor = new UpgPrestashopCallback($this->module, $config);
 
         try {
             $handler = new \Upg\Library\Callback\Handler($config, $data, $processor);
@@ -44,7 +44,7 @@ class PaycoCallbackModuleFrontController extends ModuleFrontController
                 null, true
             );
 
-            echo json_encode(array('url'=>Context::getContext()->link->getModuleLink('payco', 'error')));
+            echo json_encode(array('url'=>Context::getContext()->link->getModuleLink('upg', 'error')));
 
         }catch (Exception $e) {
             Logger::addLog(
@@ -55,7 +55,7 @@ class PaycoCallbackModuleFrontController extends ModuleFrontController
                 null, true
             );
 
-            echo json_encode(array('url'=>Context::getContext()->link->getModuleLink('payco', 'error')));
+            echo json_encode(array('url'=>Context::getContext()->link->getModuleLink('upg', 'error')));
         }
 
         exit;

@@ -1,6 +1,6 @@
-projectName: Payco\PrestashopModule
-title: Payco\PrestashopModule
-subTitle: Payco Prestashop documentation
+projectName: Upg\PrestashopModule
+title: Upg\PrestashopModule
+subTitle: Upg Prestashop documentation
 template:
     url: https://github.com/siriusphp/Template-ReadTheDocs
 baseUrl: http://upg-prestashoptest.php53.co.uk/moduledocumentation

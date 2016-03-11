@@ -1,6 +1,6 @@
 <?php
 
-include_once(_PS_MODULE_DIR_ . 'payco/vendor/autoload.php');
+include_once(_PS_MODULE_DIR_ . 'upg/vendor/autoload.php');
 
 class MnsSave implements \Upg\Library\Mns\ProcessorInterface
 {

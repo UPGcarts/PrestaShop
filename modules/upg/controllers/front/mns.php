@@ -1,16 +1,16 @@
 <?php
 
-include_once(_PS_MODULE_DIR_ . 'payco/vendor/autoload.php');
-include_once(_PS_MODULE_DIR_ . 'payco/Model/Mnssave.php');
+include_once(_PS_MODULE_DIR_ . 'upg/vendor/autoload.php');
+include_once(_PS_MODULE_DIR_ . 'upg/Model/Mnssave.php');
 
 /**
- * @property Payco module
+ * @property Upg module
  * Class PaycoCallbackModuleFrontController
  */
-class PaycoMnsModuleFrontController extends ModuleFrontController
+class UpgMnsModuleFrontController extends ModuleFrontController
 {
     /**
-     * @var Payco $this->module
+     * @var Upg $this->module
      */
     public function postProcess()
     {
