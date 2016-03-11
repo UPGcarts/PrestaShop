@@ -13,6 +13,7 @@
 
 #### composer file
 modules/payco/vendor
+modules/upg/vendor
 testsuite/phpunit/vendor
 testsuite/phpunit/composer.lock
 testsuite/behat/vendor
