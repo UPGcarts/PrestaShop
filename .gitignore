@@ -11,6 +11,9 @@
 *.bz2
 *.zip
 
+docs/en/_build
+docs/en/make.bat
+
 #### composer file
 modules/payco/vendor
 modules/upg/vendor
