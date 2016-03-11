@@ -1,18 +1,25 @@
-.. Upg Prestashop Module documentation master file, created by
-   sphinx-quickstart on Fri Mar 11 15:16:06 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+UPG Prestashop Module
+=====================
 
-Welcome to Upg Prestashop Module's documentation!
+This is the UPG module for Prestashop 1.6 to process payments using the Upg Iframe facilities for PCI compliance.
+The single module allows for using the following payment methods in a single module:
+* Credit/Debit Card with and without 3D Secure
+* Direct Debit
+* Paypal
+* Sofortüberweisung
+* Bill Payment
+* Pay in Advance
+
+This documentation will cover installation and configuration with guidance on order workflow using the module.
+
+Contents
 =================================================
-Contents:
-
 .. toctree::
-   :maxdepth: 1
-      index
-      installation
-      configuration
-      usage
+   :maxdepth: 2
+
+         Installation <installation>
+         Configuration <configuration>
+         Usage <usage>
 
 
 
