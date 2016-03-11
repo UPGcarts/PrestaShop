@@ -3,6 +3,7 @@ UPG Prestashop Module
 
 This is the UPG module for Prestashop 1.6 to process payments using the Upg Iframe facilities for PCI compliance.
 The single module allows for using the following payment methods in a single module:
+
 * Credit/Debit Card with and without 3D Secure
 * Direct Debit
 * Paypal
