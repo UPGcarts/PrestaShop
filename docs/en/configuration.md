@@ -1,8 +1,5 @@
----
-title: Configuration\Upg Prestshop
----
-
-#Configuration
+Configuration
+=============
 
 On the configuration screen you will see the following options:
 
@@ -28,20 +25,23 @@ On the configuration screen you will see the following options:
 
 The last settings are normally called 'Store Id : <currency code>' is for multi currency stores as UPG requires a store id for each currency
 
-##Details to send to UPG
+Details to send to UPG
+----------------------
 
 UPG requires to be told some Urls for the callback and the MNS saving the urls you will need to tell UPG are as follows for stores with seo friendly urls:
 
 Callback Url: <store domain>/module/upg/callback
 MNS Url: <store domain>/module/upg/mns
 
-##Module Requirements
+Module Requirements
+-------------------
 The UPG API requires that each transaction sends through the gender of the customer. For this purpose the if you wish to use the module then the user title is now a required field and each title must have an assigned gender.
 
 In the admin if you go to Customer->Titles ensure each title listed has the gender set to Male or Female
 You will also need to modify your template to make the title a required field
 
-##MNS Processing
+MNS Processing
+--------------
 A cron process needs to be setup to Processing the MNS update messages. The url which needs to be setup with cron is:
 <store url>/modules/upg/mns-cron.php
 

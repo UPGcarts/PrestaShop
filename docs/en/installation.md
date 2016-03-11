@@ -1,8 +1,5 @@
----
-title: Installation\UPG Prestshop
----
-
-#Installation
+Installation
+============
 
 To install the module manually please follow these steps:
 1. Download the latest release from GitHub
