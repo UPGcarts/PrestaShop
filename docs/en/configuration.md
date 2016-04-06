@@ -45,4 +45,4 @@ MNS Processing
 A cron process needs to be setup to Processing the MNS update messages. The url which needs to be setup with cron is:
 <store url>/modules/upg/mns-cron.php
 
-This cron should be ran every 2 to 5 minuets.
+This cron should be run every 2 to 5 minutes.
