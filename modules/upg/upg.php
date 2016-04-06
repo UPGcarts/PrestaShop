@@ -553,12 +553,12 @@ class Upg extends PaymentModule
                         null,
                         null, true
                     );
-                    $this->context->controller->errors[] = Tools::displayError('An error occurred during capture. '.$result->getData('message'));
+                    $this->context->cookie->__set('upg_capture_error', $this->l('An error occurred during capture. ').' '.$result->getData('message'));
                     $payment->delete();
                 }
 
             }catch (Exception $e) {
-                $this->context->controller->errors[] = Tools::displayError('An error occurred during capture.'.$e->getMessage());
+                $this->context->cookie->__set('upg_capture_error', $this->l('An error occurred during capture.').' '.$e->getMessage());
 
                 Logger::addLog(
                     $this->l('Payco - Capture failed').' '.$order->reference.' '.$e->getMessage(),
@@ -625,7 +625,18 @@ class Upg extends PaymentModule
         $controllerClass = $params['controller_class'];
         $errorFlag = false;
 
+        $captureMessage = '';
+        if($this->context->cookie->__isset('upg_capture_error')) {
+            $captureMessage = $this->context->cookie->__get('upg_capture_error');
+            $this->context->cookie->__unset('upg_capture_error');
+        }
+
         if($controllerClass == 'AdminOrdersController') {
+
+            if(!empty($captureMessage)) {
+                $this->context->controller->errors[] = $captureMessage;
+            }
+
             if (Tools::isSubmit('submitPaycoRefund')) {
 
                 $captureId = Tools::getValue('capture_id');
@@ -696,7 +707,7 @@ class Upg extends PaymentModule
                         Db::getInstance()->insert('upg_refund', $queryData);
 
                     }catch (Exception $e){
-                        $this->context->controller->errors[] = Tools::displayError($e->getMessage());
+                        $this->context->controller->errors[] = $this->l($e->getMessage());
 
                         Logger::addLog(
                             $this->l('Payco - Refund failed').' '.$order->reference.' '.$e->getMessage(),
@@ -905,8 +916,10 @@ class Upg extends PaymentModule
     private function getPaycoProducts(CartCore $cart, \Upg\Library\Request\CreateTransaction $request)
     {
         foreach ($cart->getProducts() as $product) {
+            $itemTotal = $product["total_wt"] * 100;
+            $itemTotal = intval('0'.$itemTotal);
             $amount = new \Upg\Library\Request\Objects\Amount();
-            $amount->setAmount((int)($product["total_wt"] * 100));
+            $amount->setAmount($itemTotal);
 
             $item = new \Upg\Library\Request\Objects\BasketItem();
 

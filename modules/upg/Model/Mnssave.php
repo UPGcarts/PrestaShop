@@ -22,7 +22,7 @@ class MnsSave implements \Upg\Library\Mns\ProcessorInterface
 
     private $module;
 
-    public function __construct(Payco $module)
+    public function __construct(Upg $module)
     {
         $this->module = $module;
     }
