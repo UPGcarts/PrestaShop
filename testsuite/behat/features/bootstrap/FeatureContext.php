@@ -150,6 +150,28 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
     }
 
     /**
+     * @Then /^I fill in the an company name with the address form/
+     */
+    public function iFillInTheAddressFormWithCompanyName()
+    {
+        $this->iFillInTheAddressForm();
+        $company = $this->faker->company;
+        $this->getSession()->getPage()->fillField('company', $company);
+    }
+
+    /**
+     * @Then /^I fill in the company details/
+     */
+    public function iFillInCompanyDetails()
+    {
+        $this->getSession()->getPage()->fillField('companyRegistrationID', 100);
+        $this->getSession()->getPage()->fillField('companyVatID', 200);
+        $this->getSession()->getPage()->fillField('companyTaxID', 300);
+        $this->getSession()->getPage()->selectFieldOption('companyRegisterType', 'HRB');
+        $this->getSession()->getPage()->find('css','input[type="submit"]')->click();
+    }
+
+    /**
      * @Then /^I press the checkout button/
      */
     public function iPressTheCheckoutButton()
