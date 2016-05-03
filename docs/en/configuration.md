@@ -35,9 +35,9 @@ MNS Url: <store domain>/module/upg/mns
 
 Module Requirements
 -------------------
-The UPG API requires that each transaction sends through the gender of the customer. For this purpose the if you wish to use the module then the user title is now a required field and each title must have an assigned gender.
+The UPG API requires that each transaction sends through the gender of the customer. For this purpose if you wish to use the module then the user title is now a required field and each title must have an assigned gender.
 
-In the admin if you go to Customer->Titles, ensure each title listed has the gender set to Male or Female
+In the admin if you go to Customer->Titles, ensure that each title listed has the gender set to Male or Female
 You will also need to modify your template to make the title a required field
 
 MNS Processing
