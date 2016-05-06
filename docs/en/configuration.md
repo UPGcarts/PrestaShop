@@ -7,7 +7,7 @@ On the configuration screen you will see the following options:
 * Store ID : Default store ID provided by UPG
 * Key : Shared key provided by UPG for signing requests and responses from the API
 * Mode : Config to set the store integration mode
-* Default Locale : Default language setting for the Iframe. By default the module will attempt to get the users current language and if the user language is supported. The users session language will be used for the UPG iframe
+* Default Locale : Default language setting for the Iframe. By default the module will attempt to get the user's current language and if the user language is supported. The users session language will be used for the UPG iframe
 * Default User Risk Class : Default user risk class for all transactions
 * Auto capture : Should the payment be autocaptured by default
 * Status for Autocapture for Paid orders : Once UPG confirmed the order is paid which status to set the order to
