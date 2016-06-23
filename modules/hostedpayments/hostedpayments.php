@@ -946,10 +946,13 @@ class Hostedpayments extends PaymentModule
         }
         $riskClass = intval($riskClass);
 
+        //check if user has done transaction
+
+
         $transactionType = \Upg\Library\Request\CreateTransaction::USER_TYPE_PRIVATE;
 
         if (!empty($invoiceAddress->company) && Configuration::get('UPG_B2B_ENABLED')) {
-            $companyRegistrationId = array_key_exists('companyRegistrationID', $postData)?trim($postData['companyVatID']):'';
+            $companyRegistrationId = array_key_exists('companyRegistrationID', $postData)?trim($postData['companyRegistrationID']):'';
             $companyVatId = array_key_exists('companyVatID', $postData)?trim($postData['companyVatID']):'';
             $companyTaxId = array_key_exists('companyTaxID', $postData)?trim($postData['companyTaxID']):'';
             $companyRegisterType = array_key_exists('companyRegisterType', $postData)?trim($postData['companyRegisterType']):'';
@@ -977,7 +980,7 @@ class Hostedpayments extends PaymentModule
         $orderId = $cart->id.':'.time();
 
         $request->setOrderID($orderId)
-            ->setUserID($cart->id_customer)
+            ->setUserID($cart->id_customer.':'.$transactionType)
             ->setIntegrationType(\Upg\Library\Request\CreateTransaction::INTEGRATION_TYPE_HOSTED_AFTER)
             ->setAutoCapture($autocapture)
             ->setContext(\Upg\Library\Request\CreateTransaction::CONTEXT_ONLINE)
