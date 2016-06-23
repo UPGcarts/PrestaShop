@@ -1,5 +1,5 @@
-UPG Prestashop Module
-=====================
+Hosted Payments Prestashop Module
+=================================
 
 This is the hosted payments module for Prestashop 1.6 to process payments using the Hosted Payments Iframe facilities for PCI compliance.
 The single module allows for using the following payment methods in a single module:
