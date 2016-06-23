@@ -1,0 +1,23 @@
+projectName: Upg\PrestashopModule
+title: Upg\PrestashopModule
+subTitle: Upg Prestashop documentation
+template:
+    url: https://github.com/siriusphp/Template-ReadTheDocs
+baseUrl: http://upg-prestashoptest.php53.co.uk/moduledocumentation
+menu:
+  sections:
+    installation:
+      name: Installation
+      items:
+        installation:
+          text: Installation
+          relativeUrl: installation.html
+    usage:
+      name: Module Usage
+      items:
+        configuration:
+          text: Configuration
+          relativeUrl: configuration.html
+        usage:
+          text: Usage
+          relativeUrl: usage.html
