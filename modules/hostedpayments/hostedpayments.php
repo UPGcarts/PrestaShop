@@ -347,7 +347,7 @@ class Hostedpayments extends PaymentModule
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_ACKNOWLEDGEPENDING', Configuration::get(self::UPG_STATUS_RETURNED));
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING'));
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_CIAPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_CIAPENDING'));
-            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_MERCHANTPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS')));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_MERCHANTPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS'));
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_INPROGRESS', Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS'));
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_DONE', Configuration::get('UPG_PAID_NON_AUTOCAPTURE'));
 
