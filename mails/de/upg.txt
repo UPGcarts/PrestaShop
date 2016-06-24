@@ -1,0 +1,25 @@
+
+[{shop_url}]
+
+Hallo {firstname} {lastname},
+
+Thank you for shopping with {shop_name}!
+
+Ihr Auftrag mit Referenz {order_name} wurde erfolgreich angelegt.
+
+Sie haben sich entschieden per Bank&uuml;berweisung zu bezahlen.
+
+Hier finden Sie die Bankdaten und den Verwendungszweck:
+
+{upg_txt}
+
+Sie k&ouml;nnen Ihren Auftrag in Ihrem
+"Bestellverlauf" [{history_url}] &uuml;berpr&uuml;fen.
+
+Falls Sie ein Gastkonto verwenden, k&ouml;nnen Sie Ihre Bestellung im
+"Gastbestellungsverlauf" [{guest_tracking_url}] pr&uuml;fen.
+
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/]
+

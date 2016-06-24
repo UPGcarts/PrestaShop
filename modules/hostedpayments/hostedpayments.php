@@ -181,6 +181,7 @@ class Hostedpayments extends PaymentModule
 
     public function addModuleUpgStates()
     {
+        $ranInstall = false;
         if (!(Configuration::get(self::UPG_STATUS_STARTED) > 0)) {
             $OrderState = new OrderState(null, Configuration::get('PS_LANG_DEFAULT'));
             $OrderState->name = "Awaiting payment From Hosted Payment";
@@ -197,6 +198,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->deleted = false;
             $OrderState->add();
             Configuration::updateValue(self::UPG_STATUS_STARTED, $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get(self::UPG_STATUS_RETURNED) > 0)) {
@@ -216,6 +218,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->template = "upg";
             $OrderState->add();
             Configuration::updateValue(self::UPG_STATUS_RETURNED, $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_MNS_INDUNNING') > 0)) {
@@ -234,6 +237,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->deleted = false;
             $OrderState->add();
             Configuration::updateValue('UPG_MNS_INDUNNING', $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING') > 0)) {
@@ -252,6 +256,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->deleted = false;
             $OrderState->add();
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING', $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_MNS_TRANSACTION_STATUS_CIAPENDING') > 0)) {
@@ -270,6 +275,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->deleted = false;
             $OrderState->add();
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_CIAPENDING', $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS') > 0)) {
@@ -288,6 +294,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->deleted = false;
             $OrderState->add();
             Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_INPROGRESS', $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_PAID_AUTOCAPTURE') > 0)) {
@@ -307,6 +314,7 @@ class Hostedpayments extends PaymentModule
             $OrderState->add();
             Configuration::updateValue('UPG_PAID_AUTOCAPTURE', $OrderState->id);
             Configuration::updateValue('UPG_AUTOCAPTURE_PAID', $OrderState->id);
+            $ranInstall = true;
         }
 
         if (!(Configuration::get('UPG_PAID_NON_AUTOCAPTURE') > 0)) {
@@ -326,6 +334,26 @@ class Hostedpayments extends PaymentModule
             $OrderState->add();
             Configuration::updateValue('UPG_PAID_NON_AUTOCAPTURE', $OrderState->id);
             Configuration::updateValue('UPG_RESERVE_PAID', $OrderState->id);
+            $ranInstall = true;
+        }
+
+        if($ranInstall) {
+            Configuration::updateValue('UPG_AUTOCAPTURE_PAID', Configuration::get('UPG_PAID_AUTOCAPTURE'));
+            Configuration::updateValue('UPG_RESERVE_PAID', Configuration::get('UPG_PAID_AUTOCAPTURE'));
+            Configuration::updateValue('UPG_RESERVE_PAIDPENDING', Configuration::get(self::UPG_STATUS_STARTED));
+            Configuration::updateValue('UPG_MNS_PAYMENTFAILED', Configuration::get('PS_OS_ERROR'));
+            Configuration::updateValue('UPG_MNS_CHARGEBACK', Configuration::get('PS_OS_REFUND'));
+            Configuration::updateValue('UPG_MNS_CLEARED', Configuration::get('UPG_PAID_AUTOCAPTURE'));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_ACKNOWLEDGEPENDING', Configuration::get(self::UPG_STATUS_RETURNED));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING'));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_CIAPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_CIAPENDING'));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_MERCHANTPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS')));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_INPROGRESS', Configuration::get('UPG_MNS_TRANSACTION_STATUS_INPROGRESS'));
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_DONE', Configuration::get('UPG_PAID_NON_AUTOCAPTURE'));
+
+            Configuration::updateValue('UPG_MNS_INDUNNING', Configuration::get('UPG_MNS_INDUNNING'));
+
+            Configuration::updateValue('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING', Configuration::get('UPG_MNS_TRANSACTION_STATUS_FRAUDPENDING'));
         }
 
     }
