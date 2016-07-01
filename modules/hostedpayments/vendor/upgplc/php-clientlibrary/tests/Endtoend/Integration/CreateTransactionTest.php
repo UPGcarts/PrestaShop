@@ -12,6 +12,7 @@ use Upg\Library\Request\Objects\Amount;
 use Upg\Library\Request\Objects\BasketItem;
 use Upg\Library\Request\Objects\Person;
 use Upg\Library\Risk\RiskClass;
+use \Upg\Library\Request\Objects\Company;
 
 class CreateTransactionTest extends \PHPUnit_Framework_TestCase
 {
@@ -275,5 +276,59 @@ class CreateTransactionTest extends \PHPUnit_Framework_TestCase
         $apiEndPoint = new CreateTransaction($config, $request);
 
         $apiEndPoint->sendRequest();
+    }
+
+    public function testSuccessfulB2bTransaction()
+    {
+        if (is_null($this->config)) {
+            $this->markTestSkipped('Config is not set, please set up the required environment variables');
+            return false;
+        }
+
+        $request = new CreateTransactionRequest($this->config);
+
+        //unique ID for the tests
+        $orderId = hash('crc32b', microtime());
+        $userId = "GUEST:".hash('md5', microtime());
+
+        $request->setOrderID($orderId)
+            ->setUserID($userId)
+            ->setIntegrationType(CreateTransactionRequest::INTEGRATION_TYPE_HOSTED_AFTER)
+            ->setAutoCapture(true)
+            ->setContext(CreateTransactionRequest::CONTEXT_ONLINE)
+            ->setMerchantReference("TEST")
+            ->setUserType(CreateTransactionRequest::USER_TYPE_BUSINESS)
+            ->setUserRiskClass(RiskClass::RISK_CLASS_DEFAULT)
+            ->setUserData($this->getUser())
+            ->setBillingAddress($this->getAddress())
+            ->setAmount($this->getAmount())
+            ->addBasketItem($this->getBasketItem())
+            ->setLocale(Codes::LOCALE_EN);
+
+        $company = new Company();
+        $company->setCompanyName($this->faker->company)
+            ->setCompanyRegisterType(Company::COMPANY_TYPE_FN)
+            ->setCompanyVatID(4087620)
+            ->setCompanyVatID(4087620);
+
+        $request->setCompanyData($company);
+
+        $apiEndPoint = new CreateTransaction($this->config, $request);
+
+        $result = $apiEndPoint->sendRequest();
+
+        $this->assertEquals(1, $result->getData('resultCode'));
+        $this->assertNotEmpty($result->getData('redirectUrl'));
+
+        $ch = curl_init($result->getData('redirectUrl'));
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        $this->assertEquals(200, $httpCode);
     }
 }

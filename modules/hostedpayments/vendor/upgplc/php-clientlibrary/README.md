@@ -1,9 +1,9 @@
-# Payco Client Library for PHP #
+# UPG Client Library for PHP #
 
 [![Build Status](https://travis-ci.org/UPGcarts/clientlibrary.svg?branch=master)](https://travis-ci.org/UPGcarts/clientlibrary)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/7710d14f3d9f4f54bc4cb1892f19cce3)](https://www.codacy.com/app/christine-jamieson/clientlibrary)
 
-PHP Client Library for the Payco API.
+PHP Client Library for the UPG API.
 Based on the API Documentation found here: https://www.manula.com/manuals/payco/payment-api/hostedpagesdraft/en/topic/introduction
 
 ## Current Issues ##
@@ -26,16 +26,16 @@ $config = new Upg\Library\Config($configData);
 The fields for the config that must be provided are:
 
  * ['merchantPassword'] *string* This is the merchant password for mac calculation
- * ['merchantID'] *string* This is the merchantID assigned by PayCo.
+ * ['merchantID'] *string* This is the merchantID assigned by UPG.
  * ['storeID'] *string* This is the store ID of a merchant.
  * ['logEnabled'] *bool* Should logging be enabled
  * ['logLevel'] *int* Log level See class constants for possible values
  * ['logLocationMain'] *string* Main log location file path
  * ['logLocationRequest'] *string* Log location file path for API requests
  * ['defaultRiskClass'] *string* Default risk class
- * ['defaultLocale'] *string* Default locale (see [Supported Languages](http://www.manula.com/manuals/payco/payment-api/hostedpagesdraft/en/topic/supported-languages))
+ * ['defaultLocale'] *string* Default locale (see [Supported Languages](http://documentation.upgplc.com/hostedpagesdraft/en/topic/supported-languages))
  * ['sendRequestsWithSalt'] *bool* Automatically add salt to requests. In live this should be set to true and not false. However, for testing this can be false. By default this will be true if not specified.
- * ['baseUrl'] *string* Base URL of requests that should contain either https://www.payco-sandbox.de/2.0 or https://www.pay-co.net/2.0
+ * ['baseUrl'] *string* Base URL of requests that should contain either https://sandbox.upgplc.com/2.0 or https://www.pay-co.net/2.0
 
 #### Log Levels
 When referencing log levels be sure to use the Psr\Log\LogLevel static constants
@@ -44,7 +44,7 @@ E.g. `\Psr\Log\LogLevel::ALERT`
 ### Starting an API request ###
 The Library for requests is split in three parts:
 **Upg\Library\Request** contains the request classes.
-**Upg\Library\Request\Objects** contains classes for the JSON objects that are documented in the API docs (see [JSON-Objects](http://www.manula.com/manuals/payco/payment-api/hostedpagesdraft/en/topic/json-objects)).
+**Upg\Library\Request\Objects** contains classes for the JSON objects that are documented in the API docs.
 If a request has a property that requires a JSON object please pass in the appropriately populated **Upg\Library\Request\Objects** class for that property.
 
 All properties in the request and JSON objects have getters and setters. For example, to set a field called userType on
@@ -140,7 +140,7 @@ This takes in the following for the constructor:
 
 The processor should implement two methods:
 `sendData` which the handler uses to pass data to the processor to use and another method called `run`, which will get invoked to handle call back processing.
-This processor should return a string which contains a URL where the user should be redirected to after Payco has processed the transaction.
+This processor should return a string which contains a URL where the user should be redirected to after UPG has processed the transaction.
 
 To run the handler simply call the `run` method on the object. Please note the following exceptions can be raised in which case the store must still send a URL, but respond with a non 200 HTTP result code to indicate there has been an issue. The following exceptions may be raised:
  * Upg\Library\Callback\Exception\ParamNotProvided : If a required parameter is not provided
@@ -158,7 +158,7 @@ The processor object should implement `sendData` to get data from the handler an
 
 The processor callback should avoid processing the request, instead it should save it to a database for asynchronous processing via a cron script.
 
-Please note the MNS call must always return a 200 response to Payco otherwise no other MNS would be sent until a given MNS notification is accepted with a HTTP 200 response.
+Please note the MNS call must always return a 200 response to UPG otherwise no other MNS would be sent until a given MNS notification is accepted with a HTTP 200 response.
 
 ### Working with PayCoBridge.js ###
 Please note this plugin does not provide any javascript libraries for the paybridge. Integrations using paybridge are expected to implement the javascript library. However, this library can be used to implement the server side functionality for any paybridge integrations, using PHP on the backend.
@@ -178,4 +178,4 @@ This is very easy to set up in PHPStorm by using PHP-Codesniffer. To configure P
 3. On configuration option click the ... button and in that prompt point PHPStorm to the path of Code Sniffer
 4. To set the code style navigate to Editor -> Code Style -> PHP
 5. In the setting click on Set From and go to Predefined Style -> PSR1/PSR2
-6. Click on OK
+6. Click on the OK button

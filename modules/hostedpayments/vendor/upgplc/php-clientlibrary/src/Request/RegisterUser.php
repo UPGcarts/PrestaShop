@@ -36,7 +36,7 @@ class RegisterUser extends AbstractRequest
      * @see \Upg\Library\Risk\RiskClass
      * @var string
      */
-    private $userRiskClass;
+    private $userRiskClass = null;
 
     /**
      * Contact data of the users company
@@ -315,7 +315,7 @@ class RegisterUser extends AbstractRequest
             'locale' => $this->getLocale(),
         );
 
-        if (!empty($this->userRiskClass)) {
+        if (!is_null($this->userRiskClass)) {
             $data['userRiskClass'] = $this->getUserRiskClass();
         }
 

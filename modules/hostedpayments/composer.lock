@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b531a7248c9f38eef7706f8924d3cdc7",
+    "hash": "3a2993d5ab562fcd62abd670ba1c0947",
     "content-hash": "d2021308cb05c576e72efd0d12bd58dd",
     "packages": [
         {
@@ -137,12 +137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/siriusphp/validation.git",
-                "reference": "f98da573e9c0efe5c607a7dfde1a7cccb15310c4"
+                "reference": "84299472049b728f7ea769cb44cd221e1b8c64f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/siriusphp/validation/zipball/f98da573e9c0efe5c607a7dfde1a7cccb15310c4",
-                "reference": "f98da573e9c0efe5c607a7dfde1a7cccb15310c4",
+                "url": "https://api.github.com/repos/siriusphp/validation/zipball/84299472049b728f7ea769cb44cd221e1b8c64f1",
+                "reference": "84299472049b728f7ea769cb44cd221e1b8c64f1",
                 "shasum": ""
             },
             "require": {
@@ -175,7 +175,7 @@
                 "security",
                 "validation"
             ],
-            "time": "2016-01-23 17:27:09"
+            "time": "2016-04-29 14:35:40"
         },
         {
             "name": "upgplc/php-clientlibrary",
@@ -183,16 +183,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UPGcarts/clientlibrary.git",
-                "reference": "4651f3404d51cba641284f81c5f8cbcb8be6e72d"
+                "reference": "93d21458d7d546eb88ad4cc0352b35217c69f9bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UPGcarts/clientlibrary/zipball/4651f3404d51cba641284f81c5f8cbcb8be6e72d",
-                "reference": "4651f3404d51cba641284f81c5f8cbcb8be6e72d",
+                "url": "https://api.github.com/repos/UPGcarts/clientlibrary/zipball/93d21458d7d546eb88ad4cc0352b35217c69f9bb",
+                "reference": "93d21458d7d546eb88ad4cc0352b35217c69f9bb",
                 "shasum": ""
             },
             "require": {
-                "monolog/monolog": "1.17.2",
+                "monolog/monolog": ">=1.16.0,<1.18",
                 "php": ">=5.3",
                 "siriusphp/validation": "dev-master"
             },
@@ -210,10 +210,10 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "The Client Library for Payco",
             "keywords": [
-                "library",
-                "payco"
+                "Upg",
+                "library"
             ],
-            "time": "2016-02-24 10:35:27"
+            "time": "2016-07-01 07:58:14"
         }
     ],
     "packages-dev": [],

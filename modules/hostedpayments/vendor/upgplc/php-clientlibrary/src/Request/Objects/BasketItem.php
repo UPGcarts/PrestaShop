@@ -41,7 +41,7 @@ class BasketItem extends AbstractObject
      * @var int Risk class of basket item
      * @see \Upg\Library\Risk\RiskClass
      */
-    private $basketItemRiskClass;
+    private $basketItemRiskClass = null;
 
     /**
      * @var string The basket item type
@@ -183,7 +183,7 @@ class BasketItem extends AbstractObject
             $return['basketItemID'] = $this->getBasketItemID();
         }
 
-        if ($this->basketItemRiskClass) {
+        if ($this->basketItemRiskClass !== null) {
             $return['basketItemRiskClass'] = $this->getBasketItemRiskClass();
         }
 

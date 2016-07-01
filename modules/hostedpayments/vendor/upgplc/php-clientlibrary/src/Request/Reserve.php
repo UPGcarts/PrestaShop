@@ -5,6 +5,7 @@ namespace Upg\Library\Request;
 use Upg\Library\PaymentMethods\Methods as PaymentMethods;
 use Upg\Library\Request\Objects\Amount;
 use Upg\Library\Request\Objects\BasketItem;
+use Upg\Library\Request\Attributes\ObjectArray;
 
 /**
  * Class CreateTransaction

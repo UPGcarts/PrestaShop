@@ -293,6 +293,12 @@ abstract class AbstractApi
             $this->curlSetFileUploadOptions($ch);
         }
 
+        if(is_string($this->requestRaw)){
+            $this->logger->debug('Sending following raw request to ' . $this->url . ' : ' . $this->requestRaw);
+        }else {
+            $this->logger->debug('Sending following raw request to ' . $this->url . ' : ' . serialize($this->requestRaw));
+        }
+
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestRaw);
 
         $result = curl_exec($ch);

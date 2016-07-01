@@ -141,7 +141,7 @@ class CreateTransaction extends AbstractRequest
      * @see \Upg\Library\Risk\RiskClass
      * @var string
      */
-    private $userRiskClass;
+    private $userRiskClass = null;
 
     /**
      * The IP address of the customer
@@ -751,7 +751,7 @@ class CreateTransaction extends AbstractRequest
             $data['merchantReference'] = $this->getMerchantReference();
         }
 
-        if (!empty($this->userRiskClass)) {
+        if ($this->userRiskClass !== null) {
             $data['userRiskClass'] = $this->getUserRiskClass();
         }
 
