@@ -57,7 +57,6 @@ class HostedpaymentsProcessModuleFrontController extends ModuleFrontController
 
 
         try {
-            //$this->context->cart = $this->module->checkCartHasBeenUsed($this->context->cart);
             $iframeUrl = $this->module->populateOrder($this->context->cart, $this->b2bFields);
 
             $this->context->smarty->assign(array(

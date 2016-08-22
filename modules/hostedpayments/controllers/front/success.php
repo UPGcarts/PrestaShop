@@ -9,7 +9,6 @@ class HostedpaymentsSuccessModuleFrontController extends ModuleFrontController
         $cart = $context->cart;
 
         $upg = Module::getInstanceByName('hostedpayments');
-        //$orderId = intval($_GET['order_id']);
         $cartId = intval($_GET['cart_id']);
         $transactionId = $_GET['transaction_id'];
         $cart = new Cart($cartId);
